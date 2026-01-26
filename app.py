@@ -5,10 +5,9 @@ def get_user_action():
     import sys
     while True:
         action = input("login/register: ")
-        if action in ('login', 'register'):
+        if action in ('login', 'register', 'quit'):
             return action
-        if action == 'quit':
-            sys.exit(0)
+        print('unknown action')
 
 def main():
     print("Welcome to User System")
@@ -19,13 +18,13 @@ def main():
         u = input("username: ")
         p = input("password: ")
         print(login(u, p))
-    elif action == "register":
+    if action == "register":
         u = input("username: ")
         p = input("password: ")
         register_user(u, p)
         print("user created")
-    else:
-        print("unknown action")
+    if action == 'quit':
+        print('exit system')
 
 if __name__ == "__main__":
     main()
