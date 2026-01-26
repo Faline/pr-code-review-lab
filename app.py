@@ -1,22 +1,30 @@
 from auth import login
 from user_service import register_user
 
+def get_user_action():
+    import sys
+    while True:
+        action = input("login/register: ")
+        if action in ('login', 'register', 'quit'):
+            return action
+        print('unknown action')
+
 def main():
     print("Welcome to User System")
 
-    action = input("login/register: ")
+    action = get_user_action()
 
     if action == "login":
         u = input("username: ")
         p = input("password: ")
         print(login(u, p))
-    elif action == "register":
+    if action == "register":
         u = input("username: ")
         p = input("password: ")
         register_user(u, p)
         print("user created")
-    else:
-        print("unknown action")
+    if action == 'quit':
+        print('exit system')
 
 if __name__ == "__main__":
     main()
